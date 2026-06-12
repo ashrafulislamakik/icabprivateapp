@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  HeroSection(key: heroKey),
+                  HeroSection(key: heroKey,onJoinTap: () => scrollToSection(joinKey),),
                   AboutSection(key: aboutKey),
                   ActivitiesSection(key: activitiesKey),
                   LeadershipSection(key: leadershipKey),
