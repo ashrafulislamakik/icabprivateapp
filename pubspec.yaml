@@ -19,6 +19,11 @@ dependencies:
   flutter_animate: ^4.5.2
   url_launcher: ^6.3.0
   google_fonts: ^6.2.1
+  firebase_core: ^4.0.0
+  cloud_firestore: ^6.0.0
+  firebase_database: ^12.0.0
+  firebase_storage: ^13.4.2
+  http: ^1.2.1
 
 
   cupertino_icons: ^1.0.8
@@ -40,4 +45,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img.png
+    - assets/images/
 

@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart'; // লিঙ্ক ওপেন করার জন্য
+import 'package:url_launcher/url_launcher.dart';
 import '../providers/theme_providers.dart';
 
 class LeadershipSection extends StatelessWidget {
   const LeadershipSection({super.key});
 
-  // লিঙ্ক ওপেন করার ফাংশন
-  // লিঙ্ক ওপেন করার সংশোধিত ফাংশন
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     try {
-      // LaunchMode.externalApplication দিলে এটি ব্রাউজার বা অ্যাপে ওপেন হতে বাধ্য করবে
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (e) {
-      // যদি উপরে কাজ না করে তবে সাধারণ পদ্ধতিতে ট্রাই করবে
       if (!await launchUrl(uri)) {
         debugPrint('Could not launch $url');
       }
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +29,33 @@ class LeadershipSection extends StatelessWidget {
       crossAxisCount = 2;
     }
 
+    // লিডারদের ডাটা (এখানে image পাথগুলো বসানো হয়েছে)
     final leaders = [
       {
         'name': 'মোঃ আব্দুল্লাহ',
         'designation': 'সভাপতি',
+        'image': 'assets/images/akik.jpg', // আপনার ছবির নাম অনুযায়ী দিন
         'fb': 'https://www.facebook.com/ashraful3195',
-        'email': 'https://www.facebook.com/ashraful3195'
+        'email': 'mailto:president@example.com'
       },
       {
         'name': 'মোঃ হাসান',
         'designation': 'সহ-সভাপতি',
+        'image': 'assets/images/leader2.png',
         'fb': 'https://facebook.com/username2',
         'email': 'mailto:vp@example.com'
       },
       {
         'name': 'মোঃ রহমান',
         'designation': 'সাধারণ সম্পাদক',
+        'image': 'assets/images/leader3.png',
         'fb': 'https://facebook.com/username3',
         'email': 'mailto:gs@example.com'
       },
       {
         'name': 'মোঃ ইব্রাহিম',
         'designation': 'সাংগঠনিক সম্পাদক',
+        'image': 'assets/images/leader4.png',
         'fb': 'https://facebook.com/username4',
         'email': 'mailto:os@example.com'
       },
@@ -69,7 +69,6 @@ class LeadershipSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // প্রিমিয়াম টাইটেল
           Column(
             children: [
               Text(
@@ -86,7 +85,7 @@ class LeadershipSection extends StatelessWidget {
                 height: 5,
                 width: 80,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [Colors.green, Colors.lightGreen]),
+                  gradient: const LinearGradient(colors: [Colors.green, Colors.lightGreen]),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -94,7 +93,6 @@ class LeadershipSection extends StatelessWidget {
           ),
           const SizedBox(height: 70),
 
-          // লিডারশিপ গ্রিড
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1200),
             child: GridView.builder(
@@ -138,7 +136,6 @@ class LeadershipSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // ইমেজ সেকশন উইথ গ্লো ইফেক্ট
           Stack(
             alignment: Alignment.center,
             children: [
@@ -150,16 +147,19 @@ class LeadershipSection extends StatelessWidget {
                   gradient: LinearGradient(colors: [Colors.green, Colors.lightGreen.withOpacity(0.2)]),
                 ),
               ),
+              // আইকনের বদলে এখন এসেট ইমেজ ব্যবহার করা হয়েছে
               CircleAvatar(
                 radius: 50,
-                backgroundColor: isDark ? Colors.black : Colors.white,
-                child: Icon(Icons.person, size: 55, color: Colors.green.shade700),
-                // backgroundImage: AssetImage(leader['image']!),
+                backgroundColor: isDark ? Colors.black : Colors.grey.shade200,
+                backgroundImage: AssetImage(leader['image']!), // এসেট ইমেজ এখানে আসবে
+                // যদি ছবি লোড না হয় তবে এই অংশটি এরর থেকে বাঁচাবে
+                onBackgroundImageError: (exception, stackTrace) {
+                  debugPrint('Image not found: ${leader['image']}');
+                },
               ),
             ],
           ),
           const SizedBox(height: 20),
-          // নাম
           Text(
             leader['name']!,
             textAlign: TextAlign.center,
@@ -170,7 +170,6 @@ class LeadershipSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          // পদবী
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
@@ -187,7 +186,6 @@ class LeadershipSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          // সোশ্যাল বাটন
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
