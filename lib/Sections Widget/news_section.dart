@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'newsdetailspage.dart';
+import '../widgets/newsdetailspage.dart';
 
 class NewsSection extends StatelessWidget {
   const NewsSection({super.key});

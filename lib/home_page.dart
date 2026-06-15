@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:icab_private_app/widgets/about_section.dart';
-import 'package:icab_private_app/widgets/activities_sections.dart';
 import 'package:icab_private_app/widgets/drawer_mobile.dart';
-import 'package:icab_private_app/widgets/footer_section.dart';
-import 'package:icab_private_app/widgets/gallery_section.dart';
-import 'package:icab_private_app/widgets/join_section.dart';
-import 'package:icab_private_app/widgets/leadership_section.dart';
-import 'package:icab_private_app/widgets/nav_bar.dart';
-import 'package:icab_private_app/widgets/news_section.dart';
-import 'package:icab_private_app/widgets/hero_section.dart';
+
+import 'Sections Widget/about_section.dart';
+import 'Sections Widget/activities_sections.dart';
+import 'Sections Widget/footer_section.dart';
+import 'Sections Widget/gallery_section.dart';
+import 'Sections Widget/hero_section.dart';
+import 'Sections Widget/join_section.dart';
+import 'Sections Widget/leadership_section.dart';
+import 'Sections Widget/nav_bar.dart';
+import 'Sections Widget/news_section.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
